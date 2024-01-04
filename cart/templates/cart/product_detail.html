@@ -1,0 +1,12 @@
+<!-- cart/templates/cart/product_detail.html -->
+<h2>{{ product.name }}</h2>
+<p>{{ product.description }}</p>
+<p>${{ product.price }}</p>
+{% comment %} <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+{% endcomment %}
+
+<!-- Ensure the form is included and rendered -->
+<form method="post" action="{% url 'add_to_cart' product.id %}">
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" value="Add to Cart" />
+</form>
